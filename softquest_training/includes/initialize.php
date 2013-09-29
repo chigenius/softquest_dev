@@ -7,7 +7,12 @@
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 defined('SITE_ROOT') ? null : 
+<<<<<<< HEAD
 define('SITE_ROOT', DS.'Applications'.DS.'XAMPP'.DS.'xamppfiles'.DS.'htdocs'.DS.'softquest_dev'.DS.'softquest_training');
+=======
+    define('SITE_ROOT', DS.'Users'.DS.'Chigenius'.DS.'Sites'
+    .DS.'softquest_dev'.DS.'softquest_training');
+>>>>>>> 18ed2bb5986b849ff6e2ab96a6298025145b3592
 
 defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
 
@@ -27,5 +32,7 @@ require_once(LIB_PATH.DS.'customer.php');
 require_once(LIB_PATH.DS.'car.php');
 require_once(LIB_PATH.DS.'supplier.php');
 require_once(LIB_PATH.DS.'rental.php');
+require_once(LIB_PATH.DS.'form.php');
+require_once(LIB_PATH.DS.'question.php');
 
 ?>

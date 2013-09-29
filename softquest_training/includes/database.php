@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("sq_config.php");
 
 class MySQLDatabase {
 	

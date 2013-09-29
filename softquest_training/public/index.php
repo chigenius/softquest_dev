@@ -1,7 +1,7 @@
 <?php
 //require_once '../includes/database.php';
 require_once '../includes/initialize.php';
-include_layout_template('header2.php');
+include_layout_template('header.php');
 
 ?>
 
@@ -49,7 +49,7 @@ include_layout_template('header2.php');
 			</div>
     
 <?
-include_layout_template('footer2.php');
+include_layout_template('footer.php');
 ?>
 
 <!--SELECT `CUSTOMERS`.`CUST_FNAME`, `CUSTOMERS`.CUST_LNAME, `RENTALS`.RENTAL_ID , `RENTALS`.REG_NO 

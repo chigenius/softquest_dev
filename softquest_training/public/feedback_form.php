@@ -22,6 +22,10 @@
 require_once '../includes/initialize.php';
 include_layout_template('header.php');
 
+$form = Form::find_by_id("F1");
+$form_id = !empty($_GET['form_id'])? $_GET['form_id'] : NULL;
+
+//$questions = 
 ?>
 
 		<!-- Header Wrapper -->
@@ -71,16 +75,21 @@ include_layout_template('header.php');
 												<!-- Content -->
 													<div id="form_container">
 	
-		<h1><a>Untitled Form</a></h1>
+		<h1><a><?echo $form->FORM_TITLE;?></a></h1>
 		<form id="form_712122" class="appnitro"  method="post" action="">
 					<div class="form_description">
-			<h2>Untitled Form</h2>
-			<p>This is your form description. Click here to edit.</p>
+			<h2><?echo $form->FORM_TITLE; ?></h2>
+			<p><?echo $form->INSTRUCTIONS; ?></p>
 		</div>						
+			
+			<table>
+			<tr>
+			<tr>
+			</table>
 			<ul >
 			
-					<li id="li_1" >
-		<label class="description" for="element_1">Text </label>
+			<li id="li_1" >
+				<label class="description" for="element_1">Text </label>
 		<div>
 			<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
@@ -92,7 +101,7 @@ include_layout_template('header.php');
 		</li>		<li id="li_9" >
 		<label class="description" for="element_9">Checkboxes </label>
 		<span>
-			<input type="checkbox" value="1" />
+			<input id="element_9_1" name="element_9_1" class="element checkbox" type="checkbox" value="1" />
 			<label class="choice" for="element_9_1">First option</label>
 			<input id="element_9_2" name="element_9_2" class="element checkbox" type="checkbox" value="1" />
 			<label class="choice" for="element_9_2">Second option</label>

@@ -7,7 +7,8 @@
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 defined('SITE_ROOT') ? null : 
-    define('SITE_ROOT', DS.'Users'.DS.'Chigenius'.DS.'Sites'.DS.'wheelsonme');
+    define('SITE_ROOT', DS.'Users'.DS.'Chigenius'.DS.'Sites'
+    .DS.'softquest_dev'.DS.'softquest_training');
 
 defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
 
@@ -27,5 +28,7 @@ require_once(LIB_PATH.DS.'customer.php');
 require_once(LIB_PATH.DS.'car.php');
 require_once(LIB_PATH.DS.'supplier.php');
 require_once(LIB_PATH.DS.'rental.php');
+require_once(LIB_PATH.DS.'form.php');
+require_once(LIB_PATH.DS.'question.php');
 
 ?>

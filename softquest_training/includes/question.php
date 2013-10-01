@@ -5,12 +5,12 @@ require_once(LIB_PATH.DS.'database.php');
 class Question {
 	
     protected static $table_name="QUESTIONS";
-    protected static $db_fields = array('Q_ID', 'Q_TYPE', 'FORM_ID','Q_SECTION');
+    protected static $db_fields = array('Q_ID', 'Q_TYPE', 'FORM_ID','Q_SECTION', 'QUESTION');
     public $Q_ID;
     public $Q_TYPE;
     public $FORM_ID;
     public $Q_SECTION;
-    //public $S_ID;
+    public $QUESTION;
 
 	
 public static function find_all() {
@@ -24,10 +24,10 @@ public static function find_all() {
         return !empty($result_array) ? array_shift($result_array) : false;
     }
 
-    public static function find_by_type($type) {
+    public static function find_by_formid($formid) {
         $result_array = self::find_by_sql(
         "SELECT * FROM " . self::$table_name . 
-        " WHERE Q_TYPE='{$type}'");
+        " WHERE FORM_ID ='{$formid}'");
         return !empty($result_array) ? $result_array : false;
     }
     public static function find_by_section($section) {
@@ -39,6 +39,7 @@ public static function find_all() {
 
     public static function find_by_sql($sql = "") {
         global $database;
+        //echo $sql;
         $result_set = $database->query($sql);
         $object_array = array();
         while ($row = $database->fetch_array($result_set)) {
@@ -155,54 +156,80 @@ public static function find_all() {
 
     }
     
-    public static function display_cars($cars, $task = NULL, $car=NULL){
+    public static function display_qns($form_id, $type = NULL, $question=NULL){
     echo "<table id='box-table-a' summary='Employee Pay Sheet'><thead><tr>";
-        echo "<th>S/N</th>";
-        echo "<th>Model</th>";
-        echo "<th>Make</th>";
-        echo "<th>Cost</th>";
-        echo "<th>Reg Num</th>";
-        echo "<th>Modify</th>";
-        echo "<th>X</th>";
+        echo "<th>No.</th>";
+        echo "<th>Question</th>";
+        echo "<th>Strongly Disagree</th>";
+        echo "<th>Disagree</th>";
+        echo "<th>Neutral</th>";
+        echo "<th>Agree</th>";
+        echo "<th>Strongly Agree</th>";
         echo "</tr></thead>";
         echo "<tbody>";
         $i=1;
-        echo $cars->CAR_MODEL;
+        $sections = self::find_by_sql("SELECT DISTINCT Q_SECTION FROM ".self::$table_name.
+        								" WHERE FORM_ID='{$form_id}' ");
+        //echo "sup";
+        //echo $cars->CAR_MODEL;
         if(!$car == NULL){
            
-            echo "<tr>";
-            echo "<td>". $i . "</td>";
-            echo "<td>". $car->CAR_MODEL . "</td>";
-            echo "<td>". $car->CAR_MAKE . "</td>";
-            echo "<td>". $car->COST . "</td>";
-            echo "<td>". $car->REG_NO . "</td>";
-            echo "<td>"."<a href='modifycars.php?task=edit&car_id=" .$car->REG_NO ."'>Edit</a>". "</td>";
-            echo "<td>"."<a href='modifycars.php?task=del&car_id=" .$car->REG_NO ."' onclick='confirmDelete()'>X</a>". "</td>";
-            echo "</tr>";
+            // echo "<tr>";
+//             echo "<td>". $i . "</td>";
+//             echo "<td>". $car->CAR_MODEL . "</td>";
+//             echo "<td>". $car->CAR_MAKE . "</td>";
+//             echo "<td>". $car->COST . "</td>";
+//             echo "<td>". $car->REG_NO . "</td>";
+//             echo "<td>"."<a href='modifycars.php?task=edit&car_id=" .$car->REG_NO ."'>Edit</a>". "</td>";
+//             echo "<td>"."<a href='modifycars.php?task=del&car_id=" .$car->REG_NO ."' onclick='confirmDelete()'>X</a>". "</td>";
+//             echo "</tr>";
         }else {
-            
-            foreach ($cars as $car) {
-                echo "<tr>";
-                echo "<td>". $i . "</td>";
-                echo "<td>". $car->CAR_MODEL . "</td>";
-                echo "<td>". $car->CAR_MAKE . "</td>";
-                echo "<td>". $car->COST . "</td>";
-                echo "<td>". $car->REG_NO . "</td>";
-                echo "<td>"."<a href='modifycars.php?task=edit&car_id=" .$car->REG_NO ."'>Edit</a>". "</td>";
-                echo "<td>"."<a href='modifycars.php?task=del&car_id=" .$car->REG_NO ."' onclick='confirmDelete()'>X</a>". "</td>";
-                echo "</tr>";
-                $i++;
+            foreach ($sections as $section){
+            	if($section->Q_SECTION != 'Others'){
+					echo "<tr>";
+					echo "<td>". $section->Q_SECTION ."</td>";
+					echo "</tr>";
+					$questions = self::find_by_section($section->Q_SECTION);
+					foreach ($questions as $question) {
+						echo "<tr>";
+						echo "<td>". $i . "</td>";
+						echo "<td>". $question->QUESTION . "</td>";
+						echo "<td><input type='radio' name='". $question->Q_ID ."' value='SD' /></td>";
+						echo "<td><input type='radio' name='". $question->Q_ID ."' value='DA' /></td>";
+						echo "<td><input type='radio' name='". $question->Q_ID ."' value='NN' /></td>";
+						echo "<td><input type='radio' name='". $question->Q_ID ."' value='AG' /></td>";
+						echo "<td><input type='radio' name='". $question->Q_ID ."' value='SA' /></td>";
+						echo "</tr>";
+						$i++;
+					}
+				}
             }
+            echo "<tr>";
+					echo "<td>Others</td>";
+					echo "</tr>";
+					$questions = self::find_by_section('Others');
+					foreach ($questions as $question) {
+						echo "<tr>";
+						echo "<td>". $i . "</td>";
+						echo "<td>". $question->QUESTION . "</td>";
+						echo "<td><input type='textarea' name='". 
+						$question->Q_ID ."' value='Please enter text here' 
+						
+						/></td>";
+						
+						echo "</tr>";
+						$i++;
+					}
         
         }
             echo "</tbody>";
             echo "</table>";
 
-        if($task == 'query'){
-        echo "<a href='search.php?task=search' class='button orange'>Back to Search</a>";
-        } else {
-            echo "<a href='modifycars.php?task=add' class='button orange'>Add New Car</a>";
-        }
+       //  if($task == 'query'){
+//         	echo "<a href='search.php?task=search' class='button orange'>Back to Search</a>";
+//         } else {
+//             echo "<a href='modifycars.php?task=add' class='button orange'>Add New Car</a>";
+//         }
 }
     public function edit_car($car_id=NULL){
                 echo "<form action = 'modifycars.php' method='post'><p>";

@@ -34,12 +34,12 @@ include_layout_template('header.php');
 								<section id="header">
 									
 									<!-- Logo -->
-										<h1><a href="#">SoftQuest Training Management System</a></h1>
+										<h1>SoftQuest Training Management System</h1>
 									
 									<!-- Nav -->
 										<nav id="nav" class="mobileUI-site-nav">
 											<ul>
-												<li><a href="index.html">Home</a></li>
+												<li><a href="{SITE_ROOT}">Home</a></li>
 												<li>
 													<a href="">Take Test</a>
 													
@@ -70,18 +70,19 @@ include_layout_template('header.php');
 												
 												<!-- Content -->
 													<article class="box is-post">
-														<a href="http://facebook.com/DreametryDoodle" class="image image-full"><img src="images/pic01.jpg" alt="" /></a>
+														
 														<header>
 															<h2>We wan Know Wetin You Think</h2>
 															<span class="byline">Which Course You take?</span>
-															<form>
+															<form method="post" action="feedback_form.php">
 																<select>
 																<option>Microsoft Excel Intermediate</option>
 																<option>Microsoft Excel Advanced</option>
 																
 																</select>
 																<br>
-																<input type="submit" value="Begin Feedback!" />
+																<input type="hidden" name="formid" value="F1" />
+																<input type="submit" value="Begin Feedback!"/>
 															</form>
 														</header>
 														

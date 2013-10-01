@@ -34,7 +34,7 @@ include_layout_template('header.php');
 					<section id="header">
 						
 						<!-- Logo -->
-							<h1><a href="#">SoftQuest Training Management System</a></h1>
+							<h1>SoftQuest Training Management System</h1>
 
 
 					</section>

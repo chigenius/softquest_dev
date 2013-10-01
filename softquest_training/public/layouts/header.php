@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Dopetrope by HTML5 Up!</title>
+		<title>Softquest TMS</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -21,8 +21,8 @@
 		<noscript>
 			<link rel="stylesheet" href="css/5grid/core.css" />
 			<link rel="stylesheet" href="css/5grid/core-desktop.css" />
-			<link rel="stylesheet" href="css/5grid/core-1200px.css" />
-			<link rel="stylesheet" href="css/5grid/core-noscript.css" />
+			<link rel="stylesheet" href="css/5grid/core-1200pxs.css" />
+			<link rel="stylesheet" href="css/5grid/core-noscripts.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-desktop.css" />
 		</noscript>

@@ -34,5 +34,6 @@ require_once(LIB_PATH.DS.'supplier.php');
 require_once(LIB_PATH.DS.'rental.php');
 require_once(LIB_PATH.DS.'form.php');
 require_once(LIB_PATH.DS.'question.php');
+require_once(LIB_PATH.DS.'definitions.php');
 
 ?>

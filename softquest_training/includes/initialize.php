@@ -7,17 +7,17 @@
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
 defined('SITE_ROOT') ? null : 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 define('SITE_ROOT', DS.'Applications'.DS.'XAMPP'.DS.'xamppfiles'.DS.'htdocs'.DS.'softquest_dev'.DS.'softquest_training');
-=======
+//=======
     define('SITE_ROOT', DS.'Users'.DS.'Chigenius'.DS.'Sites'
     .DS.'softquest_dev'.DS.'softquest_training');
->>>>>>> 18ed2bb5986b849ff6e2ab96a6298025145b3592
+//>>>>>>> 18ed2bb5986b849ff6e2ab96a6298025145b3592
 
 defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
 
 // load config file first
-require_once(LIB_PATH.DS.'sq_config.php');
+require_once(LIB_PATH.DS.'config.php');
 
 // load basic functions next so that everything after can use them
 require_once(LIB_PATH.DS.'functions.php');

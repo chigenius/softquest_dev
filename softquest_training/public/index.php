@@ -65,13 +65,13 @@ include_layout_template('header.php');
     
 <?
 include_layout_template('footer.php');
-<<<<<<< HEAD
+
 ?>
 
 <!--SELECT `CUSTOMERS`.`CUST_FNAME`, `CUSTOMERS`.CUST_LNAME, `RENTALS`.RENTAL_ID , `RENTALS`.REG_NO 
 FROM `CUSTOMERS`
 LEFT JOIN `RENTALS` 
 ON `CUSTOMERS`.CUST_ID = `RENTALS`.CUST_ID-->
-=======
+
 ?>
->>>>>>> 18ed2bb5986b849ff6e2ab96a6298025145b3592
+
